@@ -28,7 +28,7 @@ namespace Projekt_RESTfulWebAPI.Controllers.V1
         }
 
         /// <summary>
-        /// Hämtar specifikt Geo-Message via unikt ID
+        /// Retrieves a specific Geo-Message via unique ID
         /// </summary>
         /// <param name="id"></param>
         /// <response code="200">Geo-Message found!</response>
@@ -39,14 +39,14 @@ namespace Projekt_RESTfulWebAPI.Controllers.V1
         [HttpGet("{id}")]
         public async Task<ActionResult<GeoMessageDTO>> GeoMessageDTO (int id)
         {
-            var geoMessage = await _context.GeoMessages.Include(g => g.Message).FirstOrDefaultAsync(g => g.Id == id);
+            var geoMessage = await _context.GeoMessages.FirstOrDefaultAsync(g => g.Id == id);
 
             if (geoMessage == null)
                 return NotFound();
 
             var geoMessageDTO = new GeoMessageDTO
             {
-                Message = geoMessage.Message,
+                Message = geoMessage.Body,
                 Latitude = geoMessage.Latitude,
                 Longitude = geoMessage.Longitude
             };
@@ -55,7 +55,7 @@ namespace Projekt_RESTfulWebAPI.Controllers.V1
         }
 
         /// <summary>
-        /// Hämtar alla Geo-Message
+        /// Retrieves all Geo-Messages
         /// </summary>
         /// <response code="200">Geo-Messages found!</response>
         /// <response code="404">Failed to find Geo-Messages</response>
@@ -69,7 +69,7 @@ namespace Projekt_RESTfulWebAPI.Controllers.V1
                 .Select(g => 
                     new GeoMessageDTO
                     {
-                        Message = g.Message,
+                        Message = g.Body,
                         Latitude = g.Latitude,
                         Longitude = g.Longitude
                     }
@@ -78,7 +78,7 @@ namespace Projekt_RESTfulWebAPI.Controllers.V1
         }
 
         /// <summary>
-        /// Lägger till ett nytt Geo-Message om användaren är behörig
+        /// Adds new Geo-Message if user is authorized
         /// </summary>
         /// <param name="geoMessageDTO"></param>
         /// <param name="ApiKey"></param>
@@ -112,7 +112,7 @@ namespace Projekt_RESTfulWebAPI.Controllers.V1
 
             var getGeoMessage = new GeoMessageDTO
             {
-                Message = newGeoMessage.Message,
+                Message = newGeoMessage.Body,
                 Longitude = newGeoMessage.Longitude,
                 Latitude = newGeoMessage.Latitude
             };

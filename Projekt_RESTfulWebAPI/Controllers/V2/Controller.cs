@@ -28,7 +28,7 @@ namespace Projekt_RESTfulWebAPI.Controllers.V2
         }
 
         /// <summary>
-        /// Hämtar specifikt Geo-Message via unikt ID
+        /// Retrieves a specific Geo-Message via unique ID
         /// </summary>
         /// <param name="id"></param>
         /// <response code="200">Geo-Message found!</response>
@@ -60,7 +60,7 @@ namespace Projekt_RESTfulWebAPI.Controllers.V2
         }
 
         /// <summary>
-        /// Parametrarna möjliggör sökning av Geo-Message av särskilt område via uppgivna koordinater 
+        /// Retrieves all Geo-Comments within a certain area
         /// </summary>
         /// <param name="minLon">Minimum Longitude</param>
         /// <param name="minLat">Minimum Latitude</param>
@@ -98,7 +98,7 @@ namespace Projekt_RESTfulWebAPI.Controllers.V2
         }
 
         /// <summary>
-        /// Lägger till ett nytt Geo-Message om användaren är behörig
+        /// Adds a new Geo-Message if user is authorized
         /// </summary>
         /// <param name="addGeoMessage"></param>
         /// <param name="ApiKey"></param>
