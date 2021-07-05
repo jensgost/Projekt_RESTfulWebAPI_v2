@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Projekt_RESTfulWebAPI.Data
 {
-    public class OurDbContext : DbContext
+    public class OurDbContext : IdentityDbContext<User>
     {
         public OurDbContext(DbContextOptions<OurDbContext> options)
             : base(options)
@@ -35,13 +35,6 @@ namespace Projekt_RESTfulWebAPI.Data
 
             var geoMessage = new GeoMessage
             {
-                Message = "Message Test",
-                Longitude = 10.5,
-                Latitude = 5.10
-            };
-
-            var geoMessageV2 = new GeoMessage
-            {
                 Title = "Title Test",
                 Body = "Body Test",
                 Author = user.FirstName + " " + user.LastName,
@@ -57,7 +50,6 @@ namespace Projekt_RESTfulWebAPI.Data
 
             await AddAsync(apiToken);
             await AddAsync(geoMessage);
-            await AddAsync(geoMessageV2);
             await SaveChangesAsync();
         }
     }
