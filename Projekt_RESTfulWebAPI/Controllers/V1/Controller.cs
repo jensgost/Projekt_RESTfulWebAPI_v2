@@ -37,7 +37,7 @@ namespace Projekt_RESTfulWebAPI.Controllers.V1
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("{id}")]
-        public async Task<ActionResult<GeoMessageDTO>> GeoMessageDTO (int id)
+        public async Task<ActionResult<GeoMessageDTO>> GetGeoMessage (int id)
         {
             var geoMessage = await _context.GeoMessages.FirstOrDefaultAsync(g => g.Id == id);
 
