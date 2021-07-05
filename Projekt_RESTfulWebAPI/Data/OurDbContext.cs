@@ -27,7 +27,7 @@ namespace Projekt_RESTfulWebAPI.Data
 
             var user = new User
             {
-                UserName = "Name",
+                UserName = "Namee",
                 FirstName = "Us",
                 LastName = "Er"
             };
