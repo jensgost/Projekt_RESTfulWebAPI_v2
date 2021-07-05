@@ -54,9 +54,20 @@ namespace Projekt_RESTfulWebAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Projekt_RESTfulWebAPI", Version = "v1" });
                 c.SwaggerDoc("v2", new OpenApiInfo { Title = "Projekt_RESTfulWebAPI", Version = "v2" });
+
+                var docsPath = Path.Combine(AppContext.BaseDirectory, "Documentation.xml");
+                c.IncludeXmlComments("Documentation.xml");
+
             });
 
-            services.AddDbContext<Data.OurDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("OurDbContext")));
+
+            services.AddDbContext<Data.OurDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("OurDbContextConnection")));
+
+            services.AddIdentityCore<User>()
+                .AddEntityFrameworkStores<OurDbContext>();
+
+            services.AddAuthentication("ApiTokenScheme")
+                .AddScheme<AuthenticationSchemeOptions, AuthenticationHandler>("ApiTokenScheme", null);
         }   
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -86,6 +97,8 @@ namespace Projekt_RESTfulWebAPI
                 );
 
             app.UseAuthorization();
+
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

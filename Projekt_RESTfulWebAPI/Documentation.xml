@@ -1,0 +1,95 @@
+﻿<?xml version="1.0"?>
+<doc>
+	<assembly>
+		<name>GeoTagAPI-Project</name>
+	</assembly>
+	<members>
+		<member name="M:GeoTagAPI_Project.Controllers.V1.GeoTagController.GetGeoMessage(System.Int32)">
+			<summary>
+				Retrieves a specific Geo-Message by unique id
+			</summary>
+			<param name="id"></param>
+			<response code="200">Geo-Message found!</response>
+			<response code="404">Failed to find Geo-Message</response>
+			<returns>This returns a Geo-Message</returns>
+		</member>
+		<member name="M:GeoTagAPI_Project.Controllers.V1.GeoTagController.GetGeoMessages">
+			<summary>
+				Retrieves all Geo-Messages
+			</summary>
+			<response code="200">Geo-Messages found!</response>
+			<response code="404">Failed to find Geo-Messages</response>
+			<returns>This returns all Geo-Messages</returns>
+		</member>
+		<member name="M:GeoTagAPI_Project.Controllers.V1.GeoTagController.CreateGeoMessage(System.Guid,GeoTagAPI_Project.Dtos.V1.GeoMessageDto)">
+			<summary>
+				Adds a new Geo-Message
+			</summary>
+			<remarks>Authorization is required to create a Geo-Message</remarks>
+			<param name="geoMessageDto"></param>
+			<param name="ApiKey"></param>
+			<response code="201">Geo-Message created</response>
+			<response code="400">Failed to Create Geo-Message</response>
+			<response code="401">Failed to authorize</response>
+			<returns>A newly created Geo-Message</returns>
+		</member>
+		<member name="M:GeoTagAPI_Project.Controllers.V1.GeoTagController.DeleteGeoMessage(System.Guid,System.Int32)">
+			<summary>
+				Deletes a Geo-Message
+			</summary>
+			<remarks>Authorization is required to delete a Geo-Message</remarks>
+			<param name="ApiKey"></param>
+			<param name="id"></param>
+			<response code="200">Geo-Message Deleted</response>
+			<response code="400">Failed to Delete Geo-Message</response>
+			<response code="401">Failed to authorize</response>
+			<returns>A newly deleted Geo-Message</returns>
+		</member>
+		<member name="M:GeoTagAPI_Project.Controllers.V2.GeoTagController.GetGeoMessage(System.Int32)">
+			<summary>
+				Retrieves a specific Geo-Message by unique id
+			</summary>
+			<param name="id"></param>
+			<response code="200">Geo-Message found!</response>
+			<response code="404">Failed to find Geo-Message</response>
+			<returns>This returns a Geo-Message</returns>
+		</member>
+		<member name="M:GeoTagAPI_Project.Controllers.V2.GeoTagController.GetGeoMessagesQuery(System.Double,System.Double,System.Double,System.Double)">
+			<summary>
+				Retrieves all Geo-Messages
+			</summary>
+			<remarks>These parameters lets you find Geo-Messages by coordinates within a certain area</remarks>
+			<param name="minLon">Minimum Longitude</param>
+			<param name="minLat">Minimum Latitude</param>
+			<param name="maxLon">Maximum Longitude</param>
+			<param name="maxLat">Maximum Latitude</param>
+			<response code="200">Geo-Messages found!</response>
+			<response code="404">Failed to find Geo-Messages</response>
+			<returns>This returns all Geo-Messages or by coordinates within a certain area</returns>
+		</member>
+		<member name="M:GeoTagAPI_Project.Controllers.V2.GeoTagController.CreateGeoMessage(System.Guid,GeoTagAPI_Project.Dtos.V2.AddGeoMessageDto)">
+			<summary>
+				Adds a new Geo-Message
+			</summary>
+			<remarks>Authorization is required to create a Geo-Message</remarks>
+			<param name="addGeoMessage"></param>
+			<param name="ApiKey"></param>
+			<response code="201">Geo-Message created</response>
+			<response code="400">Failed to Create Geo-Message</response>
+			<response code="401">Failed to authorize</response>
+			<returns>A newly created Geo-Message</returns>
+		</member>
+		<member name="M:GeoTagAPI_Project.Controllers.V2.GeoTagController.DeleteGeoMessage(System.Guid,System.Int32)">
+			<summary>
+				Deletes a Geo-Message
+			</summary>
+			<remarks>Authorization is required to delete a Geo-Message</remarks>
+			<param name="ApiKey"></param>
+			<param name="id"></param>
+			<response code="200">Geo-Message Deleted</response>
+			<response code="400">Failed to Delete Geo-Message</response>
+			<response code="401">Failed to authorize</response>
+			<returns>A newly deleted Geo-Message</returns>
+		</member>
+	</members>
+</doc>
