@@ -85,10 +85,6 @@ namespace Projekt_RESTfulWebAPI
 
             }
 
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
             app.UseCors(options => options
                 .SetIsOriginAllowed(origin => true)
                 .AllowCredentials()
@@ -96,9 +92,13 @@ namespace Projekt_RESTfulWebAPI
                 .AllowAnyHeader()
                 );
 
-            app.UseAuthorization();
+            app.UseHttpsRedirection();
+
+            app.UseRouting();
 
             app.UseAuthentication();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
