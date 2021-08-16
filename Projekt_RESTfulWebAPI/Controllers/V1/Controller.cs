@@ -117,7 +117,7 @@ namespace Projekt_RESTfulWebAPI.Controllers.V1
                 Latitude = newGeoMessage.Latitude
             };
 
-            return CreatedAtAction(nameof(GeoMessageDTO), new { id = newGeoMessage.Id }, getGeoMessage);
+            return CreatedAtAction(nameof(GetGeoMessage), new { id = newGeoMessage.Id }, getGeoMessage);
         }
     }
 }
